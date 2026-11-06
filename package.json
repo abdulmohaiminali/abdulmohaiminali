@@ -1,0 +1,19 @@
+{
+  "name": "abdul-mohaimin-ali-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "check": "node --check dist/js/main.js && node --check dist/js/footer-slats.js && node --check dist/js/load-folders.js && node --check src/lanyard.js && node --check dist/js/lanyard.bundle.js && node --check dist/js/folder-app.js && node --test scripts/performance.test.mjs",
+    "build:lanyard": "esbuild src/lanyard.js --bundle --minify --format=esm --outfile=dist/js/lanyard.bundle.js",
+    "build:folders": "esbuild src/folder-entry.jsx --bundle --minify --jsx=automatic --format=esm --define:process.env.NODE_ENV=\"production\" --outfile=dist/js/folder-app.js"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "react-dom": "19.3.0",
+    "esbuild": "0.28.2",
+    "react": "19.3.0"
+  }
+}
