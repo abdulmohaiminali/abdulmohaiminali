@@ -14,7 +14,7 @@
   <link rel="preload" href="assets/card-front.png" as="image" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css?v=kopp-images">
   <link rel="stylesheet" href="js/folder-app.css?v=original-folders">
-  <script type="module" src="js/main.js?v=kopp-collage"></script>
+  <script type="module" src="js/main.js?v=formspree-1"></script>
 
 </head>
 <body>
@@ -85,7 +85,8 @@
     <div class="footer-contact">
       <div class="contact-bottom"><p class="contact-pending">Send a full inquiry or leave a quick note.</p></div>
       <div class="contact-options">
-        <form class="contact-form" data-email-form>
+        <form class="contact-form" data-email-form action="https://formspree.io/f/mpppeqad" method="POST">
+          <input type="hidden" name="subject" value="Portfolio inquiry">
           <h3>Tell me about your project and how I can help</h3>
           <div class="contact-fields">
             <label>Your name<input name="name" autocomplete="name" required></label>
@@ -93,13 +94,14 @@
             <label class="field-wide">What do you have in mind?<textarea name="message" rows="4" required></textarea></label>
           </div>
           <button class="contact-submit" type="submit">Send inquiry</button>
-          <p class="form-status" data-form-status aria-live="polite">Email delivery will be connected after the receiving address and provider are set up.</p>
+          <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
         <div class="quick-note">
           <div><h3>Just a quick thought?</h3><p>Leave a sticky note for me.</p></div>
           <button class="note-trigger" type="button" popovertarget="quick-note-popover">Add Note <span aria-hidden="true">＋</span></button>
           <div class="note-popover" id="quick-note-popover" popover>
-            <form data-email-form class="note-form">
+            <form data-email-form class="note-form" action="https://formspree.io/f/mpppeqad" method="POST">
+              <input type="hidden" name="subject" value="Portfolio sticky note">
               <label class="note-label" for="quick-note-text">Add Note</label>
               <textarea id="quick-note-text" name="note" maxlength="5000" placeholder="Write a quick note…" required aria-describedby="note-word-count"></textarea>
               <div class="note-actions">
@@ -107,7 +109,7 @@
                 <span id="note-word-count" class="word-count" aria-live="polite">0 / 100 words</span>
                 <button class="note-submit" type="submit">Submit</button>
               </div>
-              <p class="form-status" data-form-status aria-live="polite">Email delivery will be connected after the receiving address and provider are set up.</p>
+              <p class="form-status" data-form-status aria-live="polite"></p>
             </form>
           </div>
         </div>

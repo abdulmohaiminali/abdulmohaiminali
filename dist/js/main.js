@@ -1,3 +1,4 @@
+import { connectContactForms } from './contact-forms.js?v=formspree-1';
 import { loadFoldersWhenNear } from './load-folders.js?v=kopp-collage';
 // Keep the document useful before WebGL loads. Dependencies are bundled locally.
 const stage = document.querySelector('#lanyard-stage');
@@ -80,24 +81,8 @@ document.querySelectorAll('.flowing-menu__item').forEach(item=>{
   });
 });
 
-// Keep quick notes within the requested 100-word limit and report the current email setup state.
-const quickNoteField=document.querySelector('#quick-note-text');
-const wordCount=document.querySelector('#note-word-count');
-const countWords=value=>value.trim()?value.trim().split(/\s+/).length:0;
-if(quickNoteField&&wordCount){
-  quickNoteField.addEventListener('input',()=>{
-    const words=quickNoteField.value.trim().split(/\s+/).filter(Boolean);
-    if(words.length>100) quickNoteField.value=words.slice(0,100).join(' ');
-    wordCount.textContent=`${countWords(quickNoteField.value)} / 100 words`;
-  });
-}
-document.querySelectorAll('[data-email-form]').forEach(form=>{
-  form.addEventListener('submit',event=>{
-    event.preventDefault();
-    const status=form.querySelector('[data-form-status]');
-    if(status) status.textContent='Your message is ready, but email delivery is not connected yet. I’ll enable sending once the inbox and hosting details are set.';
-  });
-});
+connectContactForms();
+const quickNoteField = document.querySelector('#quick-note-text');
 document.querySelector('#quick-note-popover')?.addEventListener('toggle',event=>{
   if(event.newState==='open') quickNoteField?.focus();
 });
